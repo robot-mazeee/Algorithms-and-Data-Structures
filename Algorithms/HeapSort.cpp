@@ -21,10 +21,24 @@ void build_heap(int a[], int heap_size) {
     }
 }
 
+void heap_sort(int a[], int heap_size) {
+    int temp;
+    build_heap(a, heap_size);
+
+    for (int i = heap_size-1; i > -1; i--) {
+        temp = a[0];
+        a[0] = a[i];
+        a[i] = temp;
+
+        heapify(a, i, 0);
+    }
+}
+
 int main() {
     int a[] = {2, 16, 12, 11, 15, 7, 6, 10, 20};
     int heap_size = 9;
-    build_heap(a, heap_size);
+
+    heap_sort(a, heap_size);
 
     for (int elem : a) cout << elem << '\n';
 
